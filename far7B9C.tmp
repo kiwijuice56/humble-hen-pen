@@ -1,0 +1,176 @@
+[gd_scene load_steps=22 format=3 uid="uid://bnj32mkgh3nih"]
+
+[ext_resource type="Script" path="res://farma.gd" id="1_7ugdh"]
+[ext_resource type="PackedScene" uid="uid://s0de61sea5ob" path="res://gracz.tscn" id="2_ffpja"]
+[ext_resource type="Texture2D" uid="uid://dt350m38v1o7w" path="res://assets/Untitled_Artwork-1(1).png" id="2_l1fw5"]
+[ext_resource type="AudioStream" uid="uid://bc72pa4cije7l" path="res://hen.wav" id="2_ohroj"]
+[ext_resource type="PackedScene" uid="uid://ylaq5lutcly3" path="res://control.tscn" id="3_jossy"]
+[ext_resource type="PackedScene" uid="uid://dxywe4psgidml" path="res://pisklak.tscn" id="4_3gngl"]
+[ext_resource type="Texture2D" uid="uid://bgmjk6jmx22g" path="res://assets/Untitled_Artwork-2(1).png" id="5_wdqoi"]
+[ext_resource type="Texture2D" uid="uid://ccthlnnm30cdj" path="res://assets/Untitled_Artwork-3(1).png" id="6_qdmgg"]
+[ext_resource type="Texture2D" uid="uid://d2e7p75fvfb23" path="res://assets/Untitled_Artwork-6.png" id="7_pka6h"]
+[ext_resource type="Texture2D" uid="uid://b4yscaednraij" path="res://assets/Untitled_Artwork-7.png" id="8_xea0l"]
+[ext_resource type="Texture2D" uid="uid://daps4oj1bmfsj" path="res://assets/Untitled_Artwork-8.png" id="9_8uqhc"]
+[ext_resource type="Texture2D" uid="uid://g0f4s8iie0c6" path="res://assets/Untitled_Artwork-9.png" id="10_kmlwt"]
+[ext_resource type="Texture2D" uid="uid://bd3m6aphral1c" path="res://assets/Untitled_Artwork-10.png" id="11_5kq6o"]
+[ext_resource type="Texture2D" uid="uid://d3lreqwqqcbhi" path="res://assets/Untitled_Artwork-11.png" id="12_ncktk"]
+[ext_resource type="Texture2D" uid="uid://cmjlfauofmy4g" path="res://assets/Untitled_Artwork-12.png" id="13_oieg3"]
+[ext_resource type="PackedScene" uid="uid://clhsio7gkoibx" path="res://background.tscn" id="16_f0hmq"]
+[ext_resource type="Texture2D" uid="uid://bsq12x64ix083" path="res://very important.jpg" id="17_6lds1"]
+[ext_resource type="PackedScene" uid="uid://c3l1y8k6jyhtc" path="res://lis.tscn" id="19_2cfqa"]
+[ext_resource type="PackedScene" uid="uid://7xkpon14svi1" path="res://chick.tscn" id="19_3q24x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upgog"]
+size = Vector2(1920, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ifsj"]
+size = Vector2(64, 1090)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_7ugdh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ohroj")
+volume_db = -5.24
+autoplay = true
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World"]
+position = Vector2(-8, -16)
+collision_layer = 3
+collision_mask = 3
+
+[node name="UntitledArtwork-1(1)2" type="Sprite2D" parent="World/StaticBody2D"]
+z_index = -5
+position = Vector2(432, 952)
+scale = Vector2(1, 1.12)
+texture = ExtResource("2_l1fw5")
+
+[node name="UntitledArtwork-1(1)" type="Sprite2D" parent="World/StaticBody2D/UntitledArtwork-1(1)2"]
+position = Vector2(1496, 0)
+texture = ExtResource("2_l1fw5")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(960, 1036)
+shape = SubResource("RectangleShape2D_upgog")
+
+[node name="Bounds" type="Node2D" parent="World"]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="World/Bounds"]
+position = Vector2(96, 0)
+collision_layer = 3
+collision_mask = 3
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Bounds/StaticBody2D2"]
+position = Vector2(-32, 535)
+shape = SubResource("RectangleShape2D_6ifsj")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="World/Bounds"]
+position = Vector2(1984, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Bounds/StaticBody2D3"]
+position = Vector2(-80, 536)
+shape = SubResource("RectangleShape2D_6ifsj")
+
+[node name="Art" type="Node2D" parent="World"]
+
+[node name="UntitledArtwork-3(1)2" type="Sprite2D" parent="World/Art"]
+z_index = -4
+position = Vector2(1899.5, 920)
+texture = ExtResource("6_qdmgg")
+
+[node name="UntitledArtwork-2(1)2" type="Sprite2D" parent="World/Art"]
+z_index = -4
+position = Vector2(43.5, 920)
+texture = ExtResource("5_wdqoi")
+
+[node name="UntitledArtwork-6" type="Sprite2D" parent="World/Art"]
+z_index = -4
+position = Vector2(312, 888)
+texture = ExtResource("7_pka6h")
+
+[node name="UntitledArtwork-9" type="Sprite2D" parent="World/Art"]
+z_index = -4
+position = Vector2(704, 848)
+texture = ExtResource("10_kmlwt")
+
+[node name="UntitledArtwork-10" type="Sprite2D" parent="World/Art"]
+z_index = -4
+position = Vector2(1264, 880)
+texture = ExtResource("9_8uqhc")
+
+[node name="UntitledArtwork-11" type="Sprite2D" parent="World/Art"]
+z_index = -4
+position = Vector2(1728, 944)
+texture = ExtResource("8_xea0l")
+
+[node name="UntitledArtwork-13" type="Sprite2D" parent="World/Art"]
+z_index = -4
+position = Vector2(480, 936)
+texture = ExtResource("11_5kq6o")
+
+[node name="UntitledArtwork-17" type="Sprite2D" parent="World/Art"]
+z_index = -4
+position = Vector2(1376, 944)
+texture = ExtResource("13_oieg3")
+
+[node name="UntitledArtwork-21" type="Sprite2D" parent="World/Art"]
+z_index = -4
+position = Vector2(1296, 920)
+texture = ExtResource("13_oieg3")
+
+[node name="UntitledArtwork-22" type="Sprite2D" parent="World/Art"]
+z_index = -4
+position = Vector2(1296, 960)
+texture = ExtResource("12_ncktk")
+
+[node name="UntitledArtwork-23" type="Sprite2D" parent="World/Art"]
+z_index = -4
+position = Vector2(1120, 1000)
+texture = ExtResource("11_5kq6o")
+
+[node name="pisklak" parent="." instance=ExtResource("4_3gngl")]
+visible = false
+position = Vector2(1656, 928)
+
+[node name="foxSpawn2" type="Marker2D" parent="."]
+position = Vector2(-224, 896)
+
+[node name="foxSpawn" type="Marker2D" parent="."]
+position = Vector2(2080, 896)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 90.0
+one_shot = true
+autostart = true
+
+[node name="background" parent="." instance=ExtResource("16_f0hmq")]
+z_as_relative = false
+scale = Vector2(3.63826, 0.397442)
+
+[node name="VeryImportant" type="Sprite2D" parent="."]
+position = Vector2(-616, 992)
+scale = Vector2(0.46, 0.46)
+texture = ExtResource("17_6lds1")
+
+[node name="Player" parent="." instance=ExtResource("2_ffpja")]
+z_index = 2
+position = Vector2(960, 880)
+
+[node name="Control" parent="." instance=ExtResource("3_jossy")]
+
+[node name="chick" parent="." instance=ExtResource("19_3q24x")]
+position = Vector2(200, 920)
+
+[node name="chick2" parent="." instance=ExtResource("19_3q24x")]
+position = Vector2(1672, 920)
+
+[node name="lis" parent="." instance=ExtResource("19_2cfqa")]
+position = Vector2(-168, 912)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

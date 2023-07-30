@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctr2k5x0nnwo8"]
+
+[ext_resource type="Script" path="res://Scripts/egg.gd" id="1_4oc07"]
+[ext_resource type="Script" path="res://Scripts/egg_collect.gd" id="2_2dpuo"]
+[ext_resource type="PackedScene" uid="uid://btox6llo04v7" path="res://Nodes/notifs/notifeggget.tscn" id="3_gxnwq"]
+[ext_resource type="Texture2D" uid="uid://dwj867eqb78jd" path="res://Assets/Art/Entities/Egg.png" id="3_w5i6d"]
+[ext_resource type="Texture2D" uid="uid://dqtxgjcbv8s21" path="res://Assets/Art/Particles/White_Circle.svg.png" id="5_c1lql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61ci5"]
+size = Vector2(44.0062, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tr35o"]
+size = Vector2(48, 64)
+
+[node name="egg" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_4oc07")
+
+[node name="EggCollect" type="Area2D" parent="." groups=["interactable"]]
+script = ExtResource("2_2dpuo")
+notif = ExtResource("3_gxnwq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EggCollect"]
+position = Vector2(-4.76837e-07, 0)
+scale = Vector2(1.18491, 1.28227)
+shape = SubResource("RectangleShape2D_61ci5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tr35o")
+
+[node name="sprite" type="Sprite2D" parent="."]
+z_index = 8
+position = Vector2(0, 14)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_w5i6d")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0.156863, 0.203922)
+position = Vector2(0, 29)
+scale = Vector2(0.065, 0.015)
+texture = ExtResource("5_c1lql")

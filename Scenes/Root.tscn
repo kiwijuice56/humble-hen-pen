@@ -1,0 +1,377 @@
+[gd_scene load_steps=17 format=3 uid="uid://cgrqqmiexgqit"]
+
+[ext_resource type="Script" path="res://Scripts/SceneManager.gd" id="1_uynej"]
+[ext_resource type="PackedScene" uid="uid://brflee0dnoiu4" path="res://Scenes/game.tscn" id="2_rcuch"]
+[ext_resource type="PackedScene" uid="uid://cjavw424xf2ku" path="res://Scenes/main_menu.tscn" id="3_pyghb"]
+[ext_resource type="AudioStream" uid="uid://bc72pa4cije7l" path="res://Assets/Audio/Music/hen.wav" id="4_alcjy"]
+[ext_resource type="PackedScene" uid="uid://cew00bwxqjck8" path="res://Nodes/sfx_player.tscn" id="5_xh4ya"]
+[ext_resource type="Script" path="res://Scripts/SFXManager.gd" id="5_xihur"]
+[ext_resource type="Script" path="res://Scripts/options.gd" id="7_40x7w"]
+[ext_resource type="Theme" uid="uid://djh84cp52xgqd" path="res://Resources/theme.tres" id="7_yk7hh"]
+[ext_resource type="Script" path="res://Scripts/buttonSound.gd" id="8_u87bn"]
+[ext_resource type="Texture2D" uid="uid://c405lgulsm8rt" path="res://Assets/Art/Entities/littlecutie.png" id="10_q8iis"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hw64"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_right = 32.0
+content_margin_bottom = 32.0
+bg_color = Color(0.407843, 0.529412, 0.419608, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.0546875, 0.183594, 0.1875, 1)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[sub_resource type="ImageTexture" id="ImageTexture_m0mgu"]
+
+[sub_resource type="Animation" id="Animation_myrfe"]
+resource_name = "trans_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7nrxr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_5s6al"]
+resource_name = "trans_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ibkdg"]
+_data = {
+"RESET": SubResource("Animation_7nrxr"),
+"trans_in": SubResource("Animation_myrfe"),
+"trans_out": SubResource("Animation_5s6al")
+}
+
+[node name="Root" type="Node" groups=["root"]]
+process_mode = 3
+script = ExtResource("1_uynej")
+game = ExtResource("2_rcuch")
+menu = ExtResource("3_pyghb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_alcjy")
+volume_db = -5.24
+autoplay = true
+bus = &"Music"
+
+[node name="SFXPlayer" type="Node" parent="." groups=["SFX"]]
+script = ExtResource("5_xihur")
+sfxPlayer = ExtResource("5_xh4ya")
+
+[node name="Options" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 128
+visible = false
+script = ExtResource("7_40x7w")
+
+[node name="Options" type="ColorRect" parent="Options"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_yk7hh")
+color = Color(0.211765, 0.211765, 0.211765, 0.752941)
+
+[node name="Return" type="Button" parent="Options/Options"]
+layout_mode = 0
+offset_left = 851.0
+offset_top = 840.0
+offset_right = 1051.0
+offset_bottom = 940.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 12
+text = "Back"
+script = ExtResource("8_u87bn")
+
+[node name="Options2" type="PanelContainer" parent="Options"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 135.0
+offset_top = 176.0
+offset_right = -159.0
+offset_bottom = -307.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_yk7hh")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5hw64")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/Options2"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Titles" type="HBoxContainer" parent="Options/Options2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Label2" type="Label" parent="Options/Options2/VBoxContainer/Titles"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "Audio Settings"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Options/Options2/VBoxContainer/Titles"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="Content" type="HBoxContainer" parent="Options/Options2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/Options2/VBoxContainer/Content"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Options/Options2/VBoxContainer/Content/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 25
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Options/Options2/VBoxContainer/Content/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label3" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "Master"
+
+[node name="Label4" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "Music"
+
+[node name="Label5" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "SFX"
+
+[node name="Label6" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "UI
+"
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="Options/Options2/VBoxContainer/Content/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 21
+
+[node name="Master" type="HSlider" parent="Options/Options2/VBoxContainer/Content/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("ImageTexture_m0mgu")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_m0mgu")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_m0mgu")
+theme_override_icons/tick = SubResource("ImageTexture_m0mgu")
+max_value = 1.2
+step = 0.1
+value = 1.0
+
+[node name="Music" type="HSlider" parent="Options/Options2/VBoxContainer/Content/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("ImageTexture_m0mgu")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_m0mgu")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_m0mgu")
+theme_override_icons/tick = SubResource("ImageTexture_m0mgu")
+max_value = 1.2
+step = 0.1
+value = 1.0
+
+[node name="SFX" type="HSlider" parent="Options/Options2/VBoxContainer/Content/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("ImageTexture_m0mgu")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_m0mgu")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_m0mgu")
+theme_override_icons/tick = SubResource("ImageTexture_m0mgu")
+max_value = 1.2
+step = 0.1
+value = 1.0
+
+[node name="UI" type="HSlider" parent="Options/Options2/VBoxContainer/Content/HBoxContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_icons/grabber = SubResource("ImageTexture_m0mgu")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_m0mgu")
+theme_override_icons/grabber_disabled = SubResource("ImageTexture_m0mgu")
+theme_override_icons/tick = SubResource("ImageTexture_m0mgu")
+max_value = 1.2
+step = 0.1
+value = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Options/Options2/VBoxContainer/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 48
+
+[node name="Title" type="VBoxContainer" parent="Options/Options2/VBoxContainer/Content/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label10" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer2/Title"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+
+[node name="Label8" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer2/Title"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "Move"
+
+[node name="Label5" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer2/Title"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "Interact"
+
+[node name="Label7" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer2/Title"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "Sprint"
+
+[node name="KB" type="VBoxContainer" parent="Options/Options2/VBoxContainer/Content/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label3" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer2/KB"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "Keyboard"
+horizontal_alignment = 1
+
+[node name="Label10" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer2/KB"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "WASD or arrows"
+
+[node name="Label12" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer2/KB"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "E or Space"
+
+[node name="Label15" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer2/KB"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "Shift or F"
+
+[node name="XBOX" type="VBoxContainer" parent="Options/Options2/VBoxContainer/Content/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label4" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer2/XBOX"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "Xbox"
+horizontal_alignment = 1
+
+[node name="Label11" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer2/XBOX"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "Left stick"
+
+[node name="Label13" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer2/XBOX"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "A or X"
+
+[node name="Label16" type="Label" parent="Options/Options2/VBoxContainer/Content/HBoxContainer2/XBOX"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 15
+text = "B or RT"
+
+[node name="TextureRect" type="TextureRect" parent="Options/Options2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("10_q8iis")
+stretch_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 1.5
+libraries = {
+"": SubResource("AnimationLibrary_ibkdg")
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[connection signal="pressed" from="Options/Options/Return" to="Options" method="_return"]
+[connection signal="value_changed" from="Options/Options2/VBoxContainer/Content/HBoxContainer/VBoxContainer/HBoxContainer2/Master" to="Options" method="_change_master_volume"]
+[connection signal="value_changed" from="Options/Options2/VBoxContainer/Content/HBoxContainer/VBoxContainer/HBoxContainer2/Music" to="Options" method="_change_music_volume"]
+[connection signal="value_changed" from="Options/Options2/VBoxContainer/Content/HBoxContainer/VBoxContainer/HBoxContainer2/SFX" to="Options" method="_change_sfx_volume"]
+[connection signal="value_changed" from="Options/Options2/VBoxContainer/Content/HBoxContainer/VBoxContainer/HBoxContainer2/UI" to="Options" method="_change_ui_volume"]

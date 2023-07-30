@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://xju6ayptfoxb"]
+
+[ext_resource type="Script" path="res://Scripts/sell_bin.gd" id="1_ym7u1"]
+[ext_resource type="PackedScene" uid="uid://d4mfcmh0haqrm" path="res://Nodes/notifs/notifmoneyget3.tscn" id="2_66lvx"]
+[ext_resource type="PackedScene" uid="uid://dlpykk7n45cxj" path="res://Scenes/binshadowrealsorry.tscn" id="3_r3a4p"]
+[ext_resource type="PackedScene" uid="uid://vyngp1dedsy3" path="res://Scenes/binshadow.tscn" id="4_6o6cp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ca4te"]
+size = Vector2(200, 200)
+
+[node name="SellBin" type="Area2D"]
+script = ExtResource("1_ym7u1")
+notif = ExtResource("2_66lvx")
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ca4te")
+
+[node name="Sprite2D" parent="." instance=ExtResource("3_r3a4p")]
+
+[node name="Sellbin" parent="." instance=ExtResource("4_6o6cp")]

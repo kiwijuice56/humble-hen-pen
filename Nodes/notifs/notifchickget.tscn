@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d34dwc8t1mq3i"]
+
+[ext_resource type="Theme" uid="uid://djh84cp52xgqd" path="res://Resources/theme.tres" id="1_kxf6v"]
+[ext_resource type="Script" path="res://Scripts/notif.gd" id="2_bx8lr"]
+[ext_resource type="Texture2D" uid="uid://3t3r1h0bbuf" path="res://Assets/Art/Entities/Chick1.png" id="3_v6k3b"]
+
+[node name="Notif" type="Label"]
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 32.0
+theme = ExtResource("1_kxf6v")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 50
+text = "+1"
+vertical_alignment = 1
+script = ExtResource("2_bx8lr")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(-24, 32)
+scale = Vector2(0.468078, 0.448289)
+texture = ExtResource("3_v6k3b")

@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://brflee0dnoiu4"]
+
+[ext_resource type="Script" path="res://Scripts/pause.gd" id="1_cprto"]
+[ext_resource type="PackedScene" uid="uid://bnj32mkgh3nih" path="res://Nodes/farma.tscn" id="1_qthde"]
+[ext_resource type="Theme" uid="uid://djh84cp52xgqd" path="res://Resources/theme.tres" id="2_ew1u0"]
+[ext_resource type="Script" path="res://Scripts/buttonSound.gd" id="4_2w0x7"]
+
+[node name="Game" type="Node2D" groups=["regrab"]]
+script = ExtResource("1_cprto")
+
+[node name="Farma" parent="." instance=ExtResource("1_qthde")]
+
+[node name="Pause" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Pause"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ew1u0")
+
+[node name="ColorRect" type="ColorRect" parent="Pause/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.521569)
+
+[node name="Resume" type="Button" parent="Pause/Control/ColorRect"]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 464.0
+offset_right = 1104.0
+offset_bottom = 568.0
+theme_override_colors/font_outline_color = Color(0.054902, 0.184314, 0.188235, 1)
+theme_override_constants/outline_size = 15
+text = "RESUME"
+script = ExtResource("4_2w0x7")
+
+[node name="Options" type="Button" parent="Pause/Control/ColorRect"]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 584.0
+offset_right = 1104.0
+offset_bottom = 688.0
+theme_override_colors/font_outline_color = Color(0.054902, 0.184314, 0.188235, 1)
+theme_override_constants/outline_size = 10
+text = "OPTIONS"
+script = ExtResource("4_2w0x7")
+
+[node name="Menu" type="Button" parent="Pause/Control/ColorRect"]
+layout_mode = 0
+offset_left = 824.0
+offset_top = 704.0
+offset_right = 1104.0
+offset_bottom = 808.0
+theme_override_colors/font_outline_color = Color(0.054902, 0.184314, 0.188235, 1)
+theme_override_constants/outline_size = 10
+text = "MENU"
+script = ExtResource("4_2w0x7")
+
+[connection signal="pressed" from="Pause/Control/ColorRect/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Pause/Control/ColorRect/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Pause/Control/ColorRect/Menu" to="." method="_on_menu_pressed"]

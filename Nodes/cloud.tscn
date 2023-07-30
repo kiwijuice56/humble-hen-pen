@@ -1,0 +1,12 @@
+[gd_scene load_steps=6 format=3 uid="uid://cskcsnkcr3tk"]
+
+[ext_resource type="Texture2D" uid="uid://bc758hkwrmknn" path="res://Assets/Art/Environment/Cloud1.png" id="1_jx22l"]
+[ext_resource type="Script" path="res://Scripts/Cloud.gd" id="2_dp682"]
+[ext_resource type="Texture2D" uid="uid://c0qpg0o6p3xq6" path="res://Assets/Art/Environment/Cloud2.png" id="3_fgw6q"]
+[ext_resource type="Texture2D" uid="uid://dqnl5onutof2n" path="res://Assets/Art/Environment/Cloud4.png" id="4_t7stt"]
+[ext_resource type="Texture2D" uid="uid://cpth53vm8yd6i" path="res://Assets/Art/Environment/Cloud5.png" id="5_xlgtc"]
+
+[node name="Cloud" type="Sprite2D"]
+texture = ExtResource("1_jx22l")
+script = ExtResource("2_dp682")
+cloudTex = Array[CompressedTexture2D]([ExtResource("1_jx22l"), ExtResource("3_fgw6q"), ExtResource("4_t7stt"), ExtResource("5_xlgtc")])

@@ -1,0 +1,265 @@
+[gd_scene load_steps=17 format=3 uid="uid://cjavw424xf2ku"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_ksl6x"]
+[ext_resource type="Theme" uid="uid://djh84cp52xgqd" path="res://Resources/theme.tres" id="1_m31yd"]
+[ext_resource type="Texture2D" uid="uid://dt350m38v1o7w" path="res://Assets/Art/Environment/Ground.png" id="2_g5j84"]
+[ext_resource type="Texture2D" uid="uid://dvrbsviul8or5" path="res://Assets/Art/Environment/Ground2.png" id="3_2nht4"]
+[ext_resource type="Texture2D" uid="uid://dpxsp0rfbxnx4" path="res://Assets/Art/Environment/Sun.png" id="5_wbpmm"]
+[ext_resource type="PackedScene" uid="uid://c2fwcf75spih1" path="res://Nodes/cloud_generator.tscn" id="6_j2nx2"]
+[ext_resource type="PackedScene" uid="uid://cskcsnkcr3tk" path="res://Nodes/cloud.tscn" id="6_pb8cu"]
+[ext_resource type="Texture2D" uid="uid://dqnl5onutof2n" path="res://Assets/Art/Environment/Cloud4.png" id="7_lb8mf"]
+[ext_resource type="Script" path="res://Scripts/buttonSound.gd" id="8_ho5kl"]
+[ext_resource type="Texture2D" uid="uid://c0qpg0o6p3xq6" path="res://Assets/Art/Environment/Cloud2.png" id="8_idm2l"]
+[ext_resource type="Texture2D" uid="uid://dqtxgjcbv8s21" path="res://Assets/Art/Particles/White_Circle.svg.png" id="8_ur18u"]
+[ext_resource type="Texture2D" uid="uid://cabv1lbcvhkpm" path="res://Assets/Art/Player/DownIdle.png" id="11_73ark"]
+[ext_resource type="Texture2D" uid="uid://ccthlnnm30cdj" path="res://Assets/Art/Environment/Fence2.png" id="12_iwuq4"]
+[ext_resource type="Texture2D" uid="uid://452hci5ywni3" path="res://Assets/Art/Entities/Chicken/Untitled_Artwork-15.png" id="12_ul1da"]
+[ext_resource type="Texture2D" uid="uid://3t3r1h0bbuf" path="res://Assets/Art/Entities/Chick1.png" id="13_ffjm5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3cmki"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.317647, 0.388235, 0.317647, 0.376471)
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+
+[node name="MainMenu" type="Node2D" groups=["regrab"]]
+script = ExtResource("1_ksl6x")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1000
+offset_left = -16.0
+offset_right = 2032.0
+offset_bottom = 1064.0
+color = Color(0.529412, 0.85098, 0.960784, 1)
+
+[node name="Sun" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(752, 481)
+texture = ExtResource("5_wbpmm")
+
+[node name="Ground" type="Sprite2D" parent="."]
+position = Vector2(1238, 1289)
+texture = ExtResource("2_g5j84")
+
+[node name="Ground3" type="Sprite2D" parent="."]
+position = Vector2(-261, 1293)
+texture = ExtResource("2_g5j84")
+
+[node name="Ground2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(102, 986)
+texture = ExtResource("3_2nht4")
+
+[node name="CloudGenerator" parent="." instance=ExtResource("6_j2nx2")]
+spawnX = -400.0
+
+[node name="Cloud" parent="." instance=ExtResource("6_pb8cu")]
+position = Vector2(44, 590)
+texture = ExtResource("7_lb8mf")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0.156863, 0.203922)
+position = Vector2(1340, 1034)
+scale = Vector2(0.555, 0.12)
+texture = ExtResource("8_ur18u")
+
+[node name="Shadow2" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0.156863, 0.203922)
+position = Vector2(1029, 1052)
+scale = Vector2(0.335, 0.09)
+texture = ExtResource("8_ur18u")
+
+[node name="Shadow3" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0.156863, 0.203922)
+position = Vector2(1543, 1048)
+scale = Vector2(0.09, 0.045)
+texture = ExtResource("8_ur18u")
+
+[node name="Cloud2" parent="." instance=ExtResource("6_pb8cu")]
+position = Vector2(1680, 488)
+
+[node name="Cloud3" parent="." instance=ExtResource("6_pb8cu")]
+position = Vector2(960, 496)
+texture = ExtResource("8_idm2l")
+
+[node name="Cloud4" parent="." instance=ExtResource("6_pb8cu")]
+position = Vector2(1424, 192)
+
+[node name="Cloud5" parent="." instance=ExtResource("6_pb8cu")]
+position = Vector2(488, 312)
+
+[node name="DownIdle" type="Sprite2D" parent="."]
+position = Vector2(1354, 627)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("11_73ark")
+
+[node name="DownIdle2" type="Sprite2D" parent="."]
+position = Vector2(1061, 898)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("12_ul1da")
+
+[node name="DownIdle3" type="Sprite2D" parent="."]
+position = Vector2(1547, 1011)
+scale = Vector2(-1.2, 1.2)
+texture = ExtResource("13_ffjm5")
+
+[node name="DownIdle4" type="Sprite2D" parent="."]
+position = Vector2(-7.5, 918)
+scale = Vector2(-1, 1)
+texture = ExtResource("12_iwuq4")
+
+[node name="DownIdle5" type="Sprite2D" parent="."]
+position = Vector2(99.5, 923)
+scale = Vector2(-1, 1)
+texture = ExtResource("12_iwuq4")
+
+[node name="Screen" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_m31yd")
+
+[node name="StartButton" type="Button" parent="Screen"]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 572.0
+offset_right = 761.0
+offset_bottom = 676.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.054902, 0.184314, 0.188235, 1)
+theme_override_constants/outline_size = 15
+text = "Play"
+script = ExtResource("8_ho5kl")
+
+[node name="OptionsButton" type="Button" parent="Screen"]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 708.0
+offset_right = 761.0
+offset_bottom = 812.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.054902, 0.184314, 0.188235, 1)
+theme_override_constants/outline_size = 15
+text = "Help"
+script = ExtResource("8_ho5kl")
+
+[node name="ExitButton" type="Button" parent="Screen"]
+layout_mode = 0
+offset_left = 369.0
+offset_top = 844.0
+offset_right = 761.0
+offset_bottom = 948.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.054902, 0.184314, 0.188235, 1)
+theme_override_constants/outline_size = 15
+text = "Exit"
+
+[node name="Label" type="Label" parent="Screen"]
+layout_mode = 0
+offset_left = -333.0
+offset_top = 230.0
+offset_right = 1482.0
+offset_bottom = 794.0
+theme_override_colors/font_shadow_color = Color(0.294118, 0.592157, 0.6, 0.521569)
+theme_override_colors/font_outline_color = Color(0.054902, 0.184314, 0.188235, 1)
+theme_override_constants/outline_size = 27
+theme_override_constants/shadow_outline_size = 41
+theme_override_font_sizes/font_size = 200
+text = "Humble
+Hen Pen"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="Screen"]
+visible = false
+layout_mode = 0
+offset_left = 1817.0
+offset_top = 112.0
+offset_right = 3737.0
+offset_bottom = 434.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 50
+text = ":O"
+autowrap_mode = 2
+
+[node name="Panel" type="PanelContainer" parent="Screen"]
+visible = false
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1524.0
+offset_top = 11.0
+offset_right = 1949.0
+offset_bottom = 333.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+theme_override_styles/panel = SubResource("StyleBoxFlat_3cmki")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screen/Panel"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Screen/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "credits:"
+
+[node name="Label2" type="Label" parent="Screen/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.054902, 0.184314, 0.188235, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "day 1: lubie-112"
+
+[node name="Label3" type="Label" parent="Screen/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "day 2: speedrockstrong"
+
+[node name="Label4" type="Label" parent="Screen/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "day 3: sugarbeetles"
+
+[node name="Label5" type="Label" parent="Screen/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "day 4: pitifulrock"
+
+[node name="Label6" type="Label" parent="Screen/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "day 5: cyps"
+
+[node name="Label7" type="Label" parent="Screen/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.0546875, 0.183594, 0.1875, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 43
+text = "day 6: kiwijuice56"
+
+[connection signal="pressed" from="Screen/StartButton" to="." method="_start_game"]
+[connection signal="pressed" from="Screen/OptionsButton" to="." method="_options"]
+[connection signal="pressed" from="Screen/ExitButton" to="." method="_quit_game"]

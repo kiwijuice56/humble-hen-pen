@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlpykk7n45cxj"]
+
+[ext_resource type="Texture2D" uid="uid://dqtxgjcbv8s21" path="res://Assets/Art/Particles/White_Circle.svg.png" id="1_jrh63"]
+
+[node name="Sprite2D" type="Sprite2D"]
+modulate = Color(0, 0, 0.156863, 0.203922)
+position = Vector2(0, 133)
+scale = Vector2(0.53, 0.06)
+texture = ExtResource("1_jrh63")

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4mfcmh0haqrm"]
+
+[ext_resource type="Theme" uid="uid://djh84cp52xgqd" path="res://Resources/theme.tres" id="1_8uxbr"]
+[ext_resource type="Script" path="res://Scripts/notif.gd" id="2_yf77n"]
+[ext_resource type="Texture2D" uid="uid://bs127g0kph77a" path="res://Assets/Art/UI/Money.png" id="3_qaf3d"]
+
+[node name="Notif" type="Label"]
+z_index = 5
+offset_top = -32.0
+offset_right = 64.0
+offset_bottom = 32.0
+theme = ExtResource("1_8uxbr")
+theme_override_colors/font_outline_color = Color(0.0625, 0.195313, 0.195313, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 50
+text = "+3
+"
+vertical_alignment = 1
+script = ExtResource("2_yf77n")
+
+[node name="sprite" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(-32, 32)
+scale = Vector2(0.468078, 0.448289)
+texture = ExtResource("3_qaf3d")

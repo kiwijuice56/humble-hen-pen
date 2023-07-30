@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckdprq164jiih"]
+
+[ext_resource type="Script" path="res://Scripts/BuyChicks.gd" id="1_xfd5w"]
+[ext_resource type="PackedScene" uid="uid://d34dwc8t1mq3i" path="res://Nodes/notifs/notifchickget.tscn" id="2_8bpck"]
+[ext_resource type="Texture2D" uid="uid://cfeknubg7h15t" path="res://Assets/Art/Entities/buyChick.png" id="2_b51ja"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0b6l4"]
+size = Vector2(150, 150)
+
+[node name="BuyChicks" type="Area2D"]
+script = ExtResource("1_xfd5w")
+notif = ExtResource("2_8bpck")
+
+[node name="shape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0b6l4")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(0.8125, 0.78125)
+texture = ExtResource("2_b51ja")

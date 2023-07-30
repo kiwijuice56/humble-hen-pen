@@ -1,0 +1,17 @@
+[gd_resource type="AnimatedTexture" load_steps=5 format=3 uid="uid://bli01nwvcioyw"]
+
+[ext_resource type="Texture2D" uid="uid://bc758hkwrmknn" path="res://Assets/Art/Environment/Cloud1.png" id="1_t5vdv"]
+[ext_resource type="Texture2D" uid="uid://c0qpg0o6p3xq6" path="res://Assets/Art/Environment/Cloud2.png" id="2_ppwh0"]
+[ext_resource type="Texture2D" uid="uid://dqnl5onutof2n" path="res://Assets/Art/Environment/Cloud4.png" id="3_a3w4v"]
+[ext_resource type="Texture2D" uid="uid://cpth53vm8yd6i" path="res://Assets/Art/Environment/Cloud5.png" id="4_k2ye4"]
+
+[resource]
+frames = 4
+speed_scale = 0.0
+frame_0/texture = ExtResource("1_t5vdv")
+frame_1/texture = ExtResource("2_ppwh0")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_a3w4v")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_k2ye4")
+frame_3/duration = 1.0

@@ -1,0 +1,658 @@
+[gd_scene load_steps=25 format=3 uid="uid://bnj32mkgh3nih"]
+
+[ext_resource type="Script" path="res://Scripts/farma.gd" id="1_hvty2"]
+[ext_resource type="PackedScene" uid="uid://c3l1y8k6jyhtc" path="res://Nodes/fox.tscn" id="2_xru4l"]
+[ext_resource type="Texture2D" uid="uid://dt350m38v1o7w" path="res://Assets/Art/Environment/Ground.png" id="3_057oa"]
+[ext_resource type="Texture2D" uid="uid://ccthlnnm30cdj" path="res://Assets/Art/Environment/Fence2.png" id="4_sinso"]
+[ext_resource type="Texture2D" uid="uid://d2e7p75fvfb23" path="res://Assets/Art/Environment/Grass.png" id="6_3yspy"]
+[ext_resource type="Texture2D" uid="uid://g0f4s8iie0c6" path="res://Assets/Art/Environment/Grass4.png" id="7_vpoxn"]
+[ext_resource type="Texture2D" uid="uid://daps4oj1bmfsj" path="res://Assets/Art/Environment/Grass3.png" id="8_0rj2o"]
+[ext_resource type="Texture2D" uid="uid://b4yscaednraij" path="res://Assets/Art/Environment/Grass2.png" id="9_vgaml"]
+[ext_resource type="Texture2D" uid="uid://cjhb14jixnlpc" path="res://Assets/Art/Environment/house.png" id="14_2jsa6"]
+[ext_resource type="PackedScene" uid="uid://clhsio7gkoibx" path="res://Nodes/background.tscn" id="14_gcv6s"]
+[ext_resource type="Texture2D" uid="uid://bsq12x64ix083" path="res://Assets/Art/Entities/very important.jpg" id="15_gdv44"]
+[ext_resource type="PackedScene" uid="uid://s0de61sea5ob" path="res://Nodes/player.tscn" id="16_jxjh5"]
+[ext_resource type="Script" path="res://Scripts/ReleaseChicksZone.gd" id="16_r2g8u"]
+[ext_resource type="PackedScene" uid="uid://ylaq5lutcly3" path="res://Nodes/control.tscn" id="17_dhqb7"]
+[ext_resource type="PackedScene" uid="uid://dfupubdlvmyy3" path="res://Nodes/buy_dogs.tscn" id="18_4ldyi"]
+[ext_resource type="PackedScene" uid="uid://ctr2k5x0nnwo8" path="res://Nodes/egg.tscn" id="18_hbyje"]
+[ext_resource type="PackedScene" uid="uid://dfpdbjs5d5nd4" path="res://Nodes/buy_super_chicks.tscn" id="18_rveg4"]
+[ext_resource type="PackedScene" uid="uid://xju6ayptfoxb" path="res://Nodes/sell_bin.tscn" id="18_wyelj"]
+[ext_resource type="PackedScene" uid="uid://cfmoyqsml8q7y" path="res://Nodes/chicken.tscn" id="19_edcu0"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="19_rr1j6"]
+[ext_resource type="PackedScene" uid="uid://xiqyxa2xh0gx" path="res://Scenes/dog.tscn" id="21_qlemk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upgog"]
+size = Vector2(7904, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ifsj"]
+size = Vector2(64, 1090)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbrc2"]
+size = Vector2(1679, 235)
+
+[node name="Farma" type="Node2D" groups=["game"]]
+process_mode = 1
+script = ExtResource("1_hvty2")
+fox = ExtResource("2_xru4l")
+
+[node name="background" parent="." instance=ExtResource("14_gcv6s")]
+z_as_relative = false
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World"]
+position = Vector2(9, -26)
+collision_layer = 15
+collision_mask = 15
+
+[node name="UntitledArtwork-1(1)2" type="Sprite2D" parent="World/StaticBody2D"]
+z_index = -5
+position = Vector2(130.5, 940)
+scale = Vector2(0.446, 0.5)
+texture = ExtResource("3_057oa")
+
+[node name="UntitledArtwork-1(1)" type="Sprite2D" parent="World/StaticBody2D/UntitledArtwork-1(1)2"]
+position = Vector2(1496, 0)
+texture = ExtResource("3_057oa")
+flip_h = true
+
+[node name="UntitledArtwork-1(1)4" type="Sprite2D" parent="World/StaticBody2D"]
+z_index = -5
+position = Vector2(1455.5, 940)
+scale = Vector2(0.446, 0.5)
+texture = ExtResource("3_057oa")
+
+[node name="UntitledArtwork-1(1)" type="Sprite2D" parent="World/StaticBody2D/UntitledArtwork-1(1)4"]
+position = Vector2(1496, 0)
+texture = ExtResource("3_057oa")
+flip_h = true
+
+[node name="UntitledArtwork-1(1)5" type="Sprite2D" parent="World/StaticBody2D"]
+z_index = -5
+position = Vector2(-1214, 941)
+scale = Vector2(0.446, 0.5)
+texture = ExtResource("3_057oa")
+
+[node name="UntitledArtwork-1(1)" type="Sprite2D" parent="World/StaticBody2D/UntitledArtwork-1(1)5"]
+position = Vector2(1517.94, 0)
+texture = ExtResource("3_057oa")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/StaticBody2D"]
+position = Vector2(-532, 1036)
+shape = SubResource("RectangleShape2D_upgog")
+
+[node name="Bounds" type="Node2D" parent="World"]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="World/Bounds"]
+position = Vector2(96, 0)
+collision_layer = 2
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Bounds/StaticBody2D2"]
+position = Vector2(-32, 535)
+shape = SubResource("RectangleShape2D_6ifsj")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="World/Bounds"]
+position = Vector2(2263, -8)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Bounds/StaticBody2D3"]
+position = Vector2(-251, 544)
+shape = SubResource("RectangleShape2D_6ifsj")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="World/Bounds"]
+position = Vector2(1984, 0)
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Bounds/StaticBody2D4"]
+position = Vector2(-5000, 536)
+shape = SubResource("RectangleShape2D_6ifsj")
+
+[node name="Art" type="Node2D" parent="World"]
+position = Vector2(0, -272)
+scale = Vector2(1.1, 1.1)
+
+[node name="Fence" type="Sprite2D" parent="World/Art"]
+position = Vector2(103, 966)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence2" type="Sprite2D" parent="World/Art"]
+position = Vector2(146, 965)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence3" type="Sprite2D" parent="World/Art"]
+position = Vector2(190, 964)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence4" type="Sprite2D" parent="World/Art"]
+position = Vector2(234, 962.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence5" type="Sprite2D" parent="World/Art"]
+position = Vector2(277, 961.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence6" type="Sprite2D" parent="World/Art"]
+position = Vector2(321, 962)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence7" type="Sprite2D" parent="World/Art"]
+position = Vector2(363, 964)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence8" type="Sprite2D" parent="World/Art"]
+position = Vector2(406, 963)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence9" type="Sprite2D" parent="World/Art"]
+position = Vector2(450, 962)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence10" type="Sprite2D" parent="World/Art"]
+position = Vector2(494, 960.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence11" type="Sprite2D" parent="World/Art"]
+position = Vector2(537, 959.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence12" type="Sprite2D" parent="World/Art"]
+position = Vector2(581, 958.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence13" type="Sprite2D" parent="World/Art"]
+position = Vector2(623, 962.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence14" type="Sprite2D" parent="World/Art"]
+position = Vector2(666, 961.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence15" type="Sprite2D" parent="World/Art"]
+position = Vector2(710, 960.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence16" type="Sprite2D" parent="World/Art"]
+position = Vector2(754, 958.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence17" type="Sprite2D" parent="World/Art"]
+position = Vector2(797, 957.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence18" type="Sprite2D" parent="World/Art"]
+position = Vector2(841, 958.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence19" type="Sprite2D" parent="World/Art"]
+position = Vector2(883, 960.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence20" type="Sprite2D" parent="World/Art"]
+position = Vector2(926, 959.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence21" type="Sprite2D" parent="World/Art"]
+position = Vector2(970, 958.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence22" type="Sprite2D" parent="World/Art"]
+position = Vector2(1014, 956.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence23" type="Sprite2D" parent="World/Art"]
+position = Vector2(1057, 955.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence24" type="Sprite2D" parent="World/Art"]
+position = Vector2(1101, 954.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence25" type="Sprite2D" parent="World/Art"]
+position = Vector2(1145, 955)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence26" type="Sprite2D" parent="World/Art"]
+position = Vector2(1188, 954)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence27" type="Sprite2D" parent="World/Art"]
+position = Vector2(1232, 953)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence28" type="Sprite2D" parent="World/Art"]
+position = Vector2(1276, 951.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence29" type="Sprite2D" parent="World/Art"]
+position = Vector2(1319, 950.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence30" type="Sprite2D" parent="World/Art"]
+position = Vector2(1363, 951)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence31" type="Sprite2D" parent="World/Art"]
+position = Vector2(1405, 953)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence32" type="Sprite2D" parent="World/Art"]
+position = Vector2(1448, 952)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence33" type="Sprite2D" parent="World/Art"]
+position = Vector2(1492, 951)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence34" type="Sprite2D" parent="World/Art"]
+position = Vector2(1536, 949.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence35" type="Sprite2D" parent="World/Art"]
+position = Vector2(1579, 948.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence36" type="Sprite2D" parent="World/Art"]
+position = Vector2(1623, 947.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence37" type="Sprite2D" parent="World/Art"]
+position = Vector2(1665, 951.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence38" type="Sprite2D" parent="World/Art"]
+position = Vector2(1708, 950.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence39" type="Sprite2D" parent="World/Art"]
+position = Vector2(1752, 949.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence40" type="Sprite2D" parent="World/Art"]
+position = Vector2(1796, 947.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence41" type="Sprite2D" parent="World/Art"]
+position = Vector2(1839, 946.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence42" type="Sprite2D" parent="World/Art"]
+position = Vector2(1883, 947.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence43" type="Sprite2D" parent="World/Art"]
+position = Vector2(1925, 949.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence44" type="Sprite2D" parent="World/Art"]
+position = Vector2(1968, 948.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence45" type="Sprite2D" parent="World/Art"]
+position = Vector2(2012, 947.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence46" type="Sprite2D" parent="World/Art"]
+position = Vector2(2056, 945.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence47" type="Sprite2D" parent="World/Art"]
+position = Vector2(2099, 944.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence48" type="Sprite2D" parent="World/Art"]
+position = Vector2(2143, 943.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence49" type="Sprite2D" parent="World/Art"]
+position = Vector2(-936, 975)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence50" type="Sprite2D" parent="World/Art"]
+position = Vector2(-893, 974)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence51" type="Sprite2D" parent="World/Art"]
+position = Vector2(-849, 973)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence52" type="Sprite2D" parent="World/Art"]
+position = Vector2(-805, 971.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence53" type="Sprite2D" parent="World/Art"]
+position = Vector2(-762, 970.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence54" type="Sprite2D" parent="World/Art"]
+position = Vector2(-718, 971)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence55" type="Sprite2D" parent="World/Art"]
+position = Vector2(-676, 973)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence56" type="Sprite2D" parent="World/Art"]
+position = Vector2(-633, 972)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence57" type="Sprite2D" parent="World/Art"]
+position = Vector2(-589, 971)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence58" type="Sprite2D" parent="World/Art"]
+position = Vector2(-545, 969.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence59" type="Sprite2D" parent="World/Art"]
+position = Vector2(-502, 968.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence60" type="Sprite2D" parent="World/Art"]
+position = Vector2(-458, 967.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence61" type="Sprite2D" parent="World/Art"]
+position = Vector2(-416, 971.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence62" type="Sprite2D" parent="World/Art"]
+position = Vector2(-373, 970.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence63" type="Sprite2D" parent="World/Art"]
+position = Vector2(-329, 969.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence64" type="Sprite2D" parent="World/Art"]
+position = Vector2(-285, 967.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence65" type="Sprite2D" parent="World/Art"]
+position = Vector2(-242, 966.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence66" type="Sprite2D" parent="World/Art"]
+position = Vector2(-198, 967.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence67" type="Sprite2D" parent="World/Art"]
+position = Vector2(-156, 969.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence68" type="Sprite2D" parent="World/Art"]
+position = Vector2(-113, 968.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence69" type="Sprite2D" parent="World/Art"]
+position = Vector2(-68.9999, 967.001)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence70" type="Sprite2D" parent="World/Art"]
+position = Vector2(-24.9999, 965.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence71" type="Sprite2D" parent="World/Art"]
+position = Vector2(18.0001, 964.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Fence72" type="Sprite2D" parent="World/Art"]
+position = Vector2(62.0001, 963.6)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("4_sinso")
+
+[node name="Grass2" type="Sprite2D" parent="World/Art"]
+position = Vector2(98.1818, 997.273)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_vgaml")
+
+[node name="Grass3" type="Sprite2D" parent="World/Art"]
+position = Vector2(374.545, 995.455)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_0rj2o")
+
+[node name="Grass4" type="Sprite2D" parent="World/Art"]
+position = Vector2(719.091, 989.091)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_vpoxn")
+
+[node name="Grass5" type="Sprite2D" parent="World/Art"]
+position = Vector2(642.727, 1015.45)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_3yspy")
+
+[node name="Grass6" type="Sprite2D" parent="World/Art"]
+position = Vector2(1077.27, 985.455)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_vgaml")
+
+[node name="Grass7" type="Sprite2D" parent="World/Art"]
+position = Vector2(37.2728, 1061.82)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_0rj2o")
+
+[node name="Grass8" type="Sprite2D" parent="World/Art"]
+position = Vector2(78.1818, 1146.36)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_vpoxn")
+
+[node name="Grass9" type="Sprite2D" parent="World/Art"]
+position = Vector2(1436.36, 978.182)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_vpoxn")
+
+[node name="Grass10" type="Sprite2D" parent="World/Art"]
+position = Vector2(1728.78, 1001.24)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_vgaml")
+
+[node name="Grass11" type="Sprite2D" parent="World/Art"]
+position = Vector2(1805.15, 1088.51)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("6_3yspy")
+
+[node name="Grass12" type="Sprite2D" parent="World/Art"]
+position = Vector2(1766.96, 1190.33)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_vpoxn")
+
+[node name="Grass13" type="Sprite2D" parent="World/Art"]
+position = Vector2(1831.51, 1029.42)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_0rj2o")
+
+[node name="Grass14" type="Sprite2D" parent="World/Art"]
+position = Vector2(1843.33, 1149.42)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_0rj2o")
+
+[node name="Grass15" type="Sprite2D" parent="World/Art"]
+position = Vector2(1939.69, 1181.24)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_0rj2o")
+
+[node name="Grass16" type="Sprite2D" parent="World/Art"]
+position = Vector2(1935.15, 1094.87)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_vgaml")
+
+[node name="Grass17" type="Sprite2D" parent="World/Art"]
+position = Vector2(1970.6, 985.782)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_vgaml")
+
+[node name="Grass18" type="Sprite2D" parent="World/Art"]
+position = Vector2(2049.69, 1045.78)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_vpoxn")
+
+[node name="Grass19" type="Sprite2D" parent="World/Art"]
+position = Vector2(-248.018, 1159.42)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_0rj2o")
+
+[node name="Grass20" type="Sprite2D" parent="World/Art"]
+position = Vector2(-151.655, 1191.24)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_0rj2o")
+
+[node name="Grass21" type="Sprite2D" parent="World/Art"]
+position = Vector2(-76.3637, 1117.27)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_vgaml")
+
+[node name="Grass22" type="Sprite2D" parent="World/Art"]
+position = Vector2(-120.745, 995.782)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_vgaml")
+
+[node name="Grass23" type="Sprite2D" parent="World/Art"]
+position = Vector2(-41.6547, 1055.78)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_vpoxn")
+
+[node name="Sprite2D" type="Sprite2D" parent="World"]
+visible = false
+position = Vector2(-805, 743)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("14_2jsa6")
+
+[node name="SellBin" parent="World" instance=ExtResource("18_wyelj")]
+position = Vector2(639, 820)
+scale = Vector2(0.36, 0.36)
+
+[node name="ReleaseChicksZone" type="Area2D" parent="World"]
+script = ExtResource("16_r2g8u")
+chick = ExtResource("19_edcu0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/ReleaseChicksZone"]
+position = Vector2(977.5, 835.5)
+shape = SubResource("RectangleShape2D_lbrc2")
+
+[node name="BuyDogs" parent="World" instance=ExtResource("18_4ldyi")]
+position = Vector2(449, 810)
+scale = Vector2(0.36, 0.36)
+
+[node name="BuyChicken" parent="World" instance=ExtResource("18_rveg4")]
+position = Vector2(254, 813)
+scale = Vector2(0.36, 0.36)
+
+[node name="foxSpawn" type="Marker2D" parent="."]
+position = Vector2(2247, 939)
+
+[node name="VeryImportant" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-384, 1232)
+scale = Vector2(0.46, 0.46)
+texture = ExtResource("15_gdv44")
+
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("16_jxjh5")]
+z_index = 2
+position = Vector2(1191, 818)
+scale = Vector2(1.8, 1.8)
+camera = NodePath("../Camera2D")
+
+[node name="Control" parent="." instance=ExtResource("17_dhqb7")]
+offset_left = -415.0
+offset_top = -30.0
+offset_right = -415.0
+offset_bottom = -30.0
+
+[node name="Chicken" parent="." instance=ExtResource("19_edcu0")]
+position = Vector2(1331, 920)
+
+[node name="Chicken2" parent="." instance=ExtResource("19_edcu0")]
+position = Vector2(1683, 918)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+offset = Vector2(0, 70)
+zoom = Vector2(1.2, 1.2)
+script = ExtResource("19_rr1j6")
+
+[node name="egg" parent="." instance=ExtResource("18_hbyje")]
+position = Vector2(888, 928)
+
+[node name="DogHome" type="Marker2D" parent="."]
+position = Vector2(1510, 834)
+
+[node name="Dog" parent="DogHome" instance=ExtResource("21_qlemk")]
+unique_name_in_owner = true
+position = Vector2(29, -36)
+scale = Vector2(0.4, 0.4)

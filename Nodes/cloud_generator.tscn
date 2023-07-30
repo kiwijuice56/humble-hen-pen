@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2fwcf75spih1"]
+
+[ext_resource type="Script" path="res://Scripts/CloudGenerator.gd" id="1_6alvx"]
+[ext_resource type="PackedScene" uid="uid://cskcsnkcr3tk" path="res://Nodes/cloud.tscn" id="2_e6jbi"]
+
+[node name="CloudGenerator" type="Node2D"]
+z_index = -20
+script = ExtResource("1_6alvx")
+cloud = ExtResource("2_e6jbi")

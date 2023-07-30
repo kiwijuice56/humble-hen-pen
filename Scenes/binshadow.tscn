@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://vyngp1dedsy3"]
+
+[ext_resource type="Texture2D" uid="uid://cqfv22aplpai" path="res://Assets/Art/Entities/sellbin.png" id="1_atwo3"]
+[ext_resource type="Texture2D" uid="uid://dwj867eqb78jd" path="res://Assets/Art/Entities/Egg.png" id="2_bupeh"]
+
+[node name="Sellbin" type="Sprite2D"]
+position = Vector2(-1, 20)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("1_atwo3")
+
+[node name="icon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(2.1, 23)
+rotation = -0.340339
+scale = Vector2(0.51, 0.51)
+texture = ExtResource("2_bupeh")
